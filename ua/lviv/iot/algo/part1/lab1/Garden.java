@@ -11,7 +11,9 @@ public class Garden {
     private boolean hasOrchard;
     private boolean hasVegetableGarden;
     private int numberOfFlowers;
+    
     private static Garden defultGarden = new Garden();
+
     public static Garden getInstance(){
         return defultGarden;
     }
@@ -19,12 +21,14 @@ public class Garden {
     public void plantFlower(int count){
         numberOfFlowers += count;
     }
+
     public void removeFlower(int count){
         numberOfFlowers -= count;
         if(numberOfFlowers < 0){
             numberOfFlowers = 0;
         }
     }
+
     public void addVegetableRegion(double area){
         this.area += area;
     }
