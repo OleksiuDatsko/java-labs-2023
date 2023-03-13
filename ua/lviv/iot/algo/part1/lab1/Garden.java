@@ -34,14 +34,15 @@ public class Garden {
     }
 
     public static void main(String[] args) {
-        Garden[] gardens = new Garden[4];
-        gardens[0] = new Garden();
-        gardens[1] = new Garden(240.5, true, true, 1000);
-        gardens[2] = getInstance();
-        gardens[3] = getInstance();
+        Garden[] gardens = {
+                new Garden(),
+                new Garden(240.5, true, true, 1000),
+                getInstance(),
+                getInstance()
+        };
 
-        for(int i = 0; i < gardens.length; i++){
-            System.out.println(gardens[i]);
+        for(Garden garden : gardens){
+            System.out.println(garden);
         }
     }
 }
