@@ -11,15 +11,15 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class Backyard extends Garden{
-    private double  ;
+public class UrbanGarden extends Garden {
+    private boolean isRoofTop;
+    private int numberOfPlantContainers;
     @Override
     public boolean hasVegetableGarden() {
         return true;
     }
-
     @Override
     public boolean hasOrchard() {
-        return true;
+        return false;
     }
 }

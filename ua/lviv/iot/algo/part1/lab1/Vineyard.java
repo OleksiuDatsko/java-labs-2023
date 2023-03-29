@@ -6,21 +6,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 @ToString
-public class RockGarden extends Garden{
+public class Vineyard extends Garden{
+    private int numberOfGrapeVarieties;
     @Override
     public boolean hasVegetableGarden() {
         return false;
     }
-
     @Override
     public boolean hasOrchard() {
-        return false;
+        return true;
     }
 }
