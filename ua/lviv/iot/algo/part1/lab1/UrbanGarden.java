@@ -23,6 +23,7 @@ public class UrbanGarden extends Garden {
     public boolean hasVegetableGarden() {
         return true;
     }
+
     @Override
     public boolean hasOrchard() {
         return false;

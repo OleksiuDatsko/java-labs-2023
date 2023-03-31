@@ -9,12 +9,14 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString(callSuper = true)
-public class BotanicGarden extends Garden{
+public class BotanicGarden extends Garden {
     private int numberOfGreenhouses;
+
     public BotanicGarden(double areaInHectares, int numberOfGreenhouses) {
         super(areaInHectares);
         this.numberOfGreenhouses = numberOfGreenhouses;
     }
+
     @Override
     public boolean hasVegetableGarden() {
         return false;

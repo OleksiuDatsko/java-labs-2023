@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString(callSuper = true)
-public class UniversityGarden extends Garden{
+public class UniversityGarden extends Garden {
     private int numberOfSculptures;
 
     public UniversityGarden(double areaInHectares, int numberOfSculptures) {
@@ -21,6 +21,7 @@ public class UniversityGarden extends Garden{
     public boolean hasVegetableGarden() {
         return false;
     }
+
     @Override
     public boolean hasOrchard() {
         return false;

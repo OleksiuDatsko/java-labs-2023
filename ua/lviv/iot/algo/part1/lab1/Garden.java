@@ -1,7 +1,6 @@
 package ua.lviv.iot.algo.part1.lab1;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
