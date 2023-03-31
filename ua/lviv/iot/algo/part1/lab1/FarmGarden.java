@@ -7,19 +7,20 @@ import lombok.*;
 @Setter
 @Getter
 @ToString(callSuper = true)
-public class JapaneseGarden extends Garden {
-    private int numberOfBonsai;
+public class FarmGarden extends Garden {
+    private int numberOfTractors;
 
-    public JapaneseGarden(double areaInHectares, int numberOfBonsai) {
+
+    public FarmGarden(double areaInHectares, int numberOfTractors) {
         super(areaInHectares);
-        this.numberOfBonsai = numberOfBonsai;
+        this.numberOfTractors = numberOfTractors;
     }
     @Override
     public boolean hasVegetableGarden() {
-        return false;
+        return true;
     }
     @Override
     public boolean hasOrchard() {
-        return false;
+        return true;
     }
 }

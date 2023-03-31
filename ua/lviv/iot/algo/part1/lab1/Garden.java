@@ -7,10 +7,9 @@ import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @ToString
 abstract public class Garden {
-    private double areaInHectares;
+    protected double areaInHectares;
     abstract public boolean hasVegetableGarden();
     abstract public boolean hasOrchard();
 }
