@@ -1,20 +1,18 @@
-package ua.lviv.iot.algo.part1.lab2;
+package ua.lviv.iot.algo.part1;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 @NoArgsConstructor
-@Setter
 @Getter
 @ToString(callSuper = true)
-public class BotanicGarden extends Garden {
-    private int numberOfGreenhouses;
+public class UniversityGarden extends Garden {
+    private int numberOfSculptures;
 
-    public BotanicGarden(double areaInHectares, int numberOfGreenhouses) {
+    public UniversityGarden(double areaInHectares, int numberOfSculptures) {
         super(areaInHectares);
-        this.numberOfGreenhouses = numberOfGreenhouses;
+        this.numberOfSculptures = numberOfSculptures;
     }
 
     @Override
@@ -24,6 +22,6 @@ public class BotanicGarden extends Garden {
 
     @Override
     public boolean hasOrchard() {
-        return true;
+        return false;
     }
 }
