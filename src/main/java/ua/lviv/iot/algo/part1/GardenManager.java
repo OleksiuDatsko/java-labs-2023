@@ -13,6 +13,12 @@ public class GardenManager {
         gardens.add(garden);
     }
 
+    public void addGarden(final Garden[] gardens) {
+        for(Garden garden : gardens){
+            this.gardens.add(garden);
+        }
+    }
+
     public List<Garden> findAllWithVegetableGarden() {
         return gardens.stream()
                       .filter(garden -> garden.hasVegetableGarden())
