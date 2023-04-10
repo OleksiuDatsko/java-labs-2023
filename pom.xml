@@ -11,9 +11,9 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <junit.vintage.version>5.9.2</junit.vintage.version>
-        <junit.jupiter.version>5.9.2</junit.jupiter.version>
+        <junit.version>5.9.2</junit.version>
         <lombok.version>1.18.26</lombok.version>
         <jacoco.version>0.8.8</jacoco.version>
         <spotbug.version>4.4.2</spotbug.version>
@@ -25,14 +25,14 @@
         <dependency>
 			<groupId>org.junit.vintage</groupId>
 			<artifactId>junit-vintage-engine</artifactId>
-			<version>${junit.vintage.version}</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit.jupiter.version}</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 

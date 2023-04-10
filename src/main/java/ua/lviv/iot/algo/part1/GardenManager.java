@@ -3,17 +3,19 @@ package ua.lviv.iot.algo.part1;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-import lombok.Getter;
 
-@Getter
 public class GardenManager {
     private final List<Garden> gardens = new LinkedList<>();
+
+    public List<Garden> getGardens(){ 
+        return new LinkedList<>(this.gardens);
+    }
 
     public void addGarden(final Garden garden) {
         gardens.add(garden);
     }
 
-    public void addGarden(final Garden[] gardens) {
+    public void addGardens(final Garden[] gardens) {
         for(Garden garden : gardens){
             this.gardens.add(garden);
         }

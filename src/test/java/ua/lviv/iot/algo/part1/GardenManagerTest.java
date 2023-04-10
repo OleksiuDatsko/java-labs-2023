@@ -14,7 +14,7 @@ public class GardenManagerTest {
     GardenManager gardens;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() {
         gardens = new GardenManager();
 
         Garden[] gardensToAdd = {
@@ -27,7 +27,7 @@ public class GardenManagerTest {
                 new FarmGarden(10.5, 8),
                 new FarmGarden(9.8, 15),
         };
-        gardens.addGarden(gardensToAdd);
+        gardens.addGardens(gardensToAdd);
     }
 
     @Test
@@ -80,7 +80,7 @@ public class GardenManagerTest {
                 new FarmGarden(10.5, 8),
                 new FarmGarden(9.8, 15)
         };
-        expectedGardens.addGarden(expectedGardensArray);
+        expectedGardens.addGardens(expectedGardensArray);
         assertEquals(expectedGardens.getGardens().toString(), gardens.findAllWithVegetableGarden().toString());
     }
 
@@ -96,7 +96,7 @@ public class GardenManagerTest {
                 new BotanicGarden(130, 5),
                 new FarmGarden(10.5, 8),
         };
-        expectedGardens.addGarden(expectedGardensArray);
+        expectedGardens.addGardens(expectedGardensArray);
 
         assertEquals(expectedGardens.getGardens().toString(), gardens.findAllWithAreaGreaterThan(10.0).toString());
     }

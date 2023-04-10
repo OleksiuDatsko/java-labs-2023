@@ -17,6 +17,10 @@ public class UrbanGarden extends Garden {
         this.numberOfPlantContainers = numberOfPlantContainers;
     }
 
+    public void addContainer(int numberOfPlantContainers) {
+        this.numberOfPlantContainers = this.numberOfPlantContainers + numberOfPlantContainers;
+    }
+
     @Override
     public boolean hasVegetableGarden() {
         return true;
