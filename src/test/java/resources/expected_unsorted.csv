@@ -1,0 +1,16 @@
+areaInHectares, numberOfGreenhouses 
+2.0, 5 
+areaInHectares, numberOfSculptures 
+0.75, 16 
+areaInHectares, isRoofTop, numberOfPlantContainers 
+0.002, false, 25 
+areaInHectares, numberOfSculptures 
+2.4, 25 
+areaInHectares, numberOfTractors 
+10.5, 8 
+areaInHectares, numberOfGreenhouses 
+130.0, 5 
+areaInHectares, isRoofTop, numberOfPlantContainers 
+0.001, true, 10 
+areaInHectares, numberOfTractors 
+9.8, 15 

@@ -8,6 +8,9 @@ import lombok.ToString;
 @Getter
 @ToString(callSuper = true)
 public class UniversityGarden extends Garden {
+
+    public static final String HEADERS = " numberOfSculptures";
+
     private int numberOfSculptures;
 
     public UniversityGarden(double areaInHectares, int numberOfSculptures) {
@@ -23,5 +26,15 @@ public class UniversityGarden extends Garden {
     @Override
     public boolean hasOrchard() {
         return false;
+    }
+
+    @Override
+    public String getHeaders(){
+        return super.getHeaders() + "," + HEADERS;
+    }
+
+    @Override
+    public String getCSV(){
+        return super.getCSV() + ", " + String.valueOf(this.numberOfSculptures);
     }
 }
