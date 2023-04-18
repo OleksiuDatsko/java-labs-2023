@@ -19,7 +19,7 @@ public abstract class Garden {
         return "areaInHectares";
     }
 
-    public String getCSV(){
+    public String getCommaSeparatedValues() {
         return String.valueOf(areaInHectares);
     }
 }

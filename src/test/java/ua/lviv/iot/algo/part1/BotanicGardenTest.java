@@ -26,6 +26,6 @@ public class  BotanicGardenTest {
     @Test
     public void testGetCVS(){
         BotanicGarden garden = new BotanicGarden(2.0, 5);
-        assertEquals("2.0, 5", garden.getCSV());
+        assertEquals("2.0, 5", garden.getCommaSeparatedValues());
     }
 }

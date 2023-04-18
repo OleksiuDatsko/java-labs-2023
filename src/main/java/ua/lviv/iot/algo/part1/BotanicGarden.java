@@ -29,12 +29,12 @@ public class BotanicGarden extends Garden {
     }
 
     @Override
-    public String getHeaders(){
+    public String getHeaders() {
         return super.getHeaders() + "," + HEADERS;
     }
 
     @Override
-    public String getCSV(){
-        return super.getCSV() + ", " + String.valueOf(this.numberOfGreenhouses);
+    public String getCommaSeparatedValues() {
+        return super.getCommaSeparatedValues() + ", " + String.valueOf(this.numberOfGreenhouses);
     }
 }

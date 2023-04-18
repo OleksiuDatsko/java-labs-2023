@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GardenWriter {
-    public static String RESULT_FILE_PATH = "src\\main\\java\\resources\\gardens.csv";
+    public static final String RESULT_FILE_PATH = "src\\main\\java\\resources\\gardens.csv";
 
     public void writeToFile(List<Garden> gardens) throws IOException {
 
@@ -18,7 +18,7 @@ public class GardenWriter {
             for (var garden : gardens) {
                 writer.write(garden.getHeaders());
                 writer.write(" \r\n");
-                writer.write(garden.getCSV());
+                writer.write(garden.getCommaSeparatedValues());
                 writer.write(" \r\n");
             }
         } catch (IOException e) {
@@ -26,7 +26,7 @@ public class GardenWriter {
         }
     }
 
-    public void sortWriteToFile(List<Garden> gardens) {
+    public void groupedWriteToFile(List<Garden> gardens) {
         if (gardens == null || gardens.isEmpty()) {
             return;
         }
@@ -50,17 +50,17 @@ public class GardenWriter {
                 writer.write("\n");
                 for (var garden : gardens) {
                     if (gardenType == garden.getClass()) {
-                        writer.write(garden.getCSV());
+                        writer.write(garden.getCommaSeparatedValues());
                         writer.write("\n");
                     }
                 }
                 writer.write("\n");
             }
-        } catch (IOException |
-                 NoSuchMethodException |
-                 InvocationTargetException |
-                 IllegalAccessException |
-                 InstantiationException e) {
+        } catch (IOException
+                 | NoSuchMethodException
+                 | InvocationTargetException
+                 | IllegalAccessException
+                 | InstantiationException e) {
             e.printStackTrace();
         }
     }

@@ -69,7 +69,7 @@ class GardenWriterTest {
 
     @Test
     public void testSortWriteNull() {
-        gardenWriter.sortWriteToFile(null);
+        gardenWriter.groupedWriteToFile(null);
         File resultFile = new File(GardenWriter.RESULT_FILE_PATH);
         assertFalse(resultFile.exists());
     }
@@ -77,7 +77,7 @@ class GardenWriterTest {
     @Test
     public void testSortWriteToFileGardens() throws IOException {
 
-        gardenWriter.sortWriteToFile(gardens.getGardens());
+        gardenWriter.groupedWriteToFile(gardens.getGardens());
 
         File resultFile = new File(GardenWriter.RESULT_FILE_PATH);
 
