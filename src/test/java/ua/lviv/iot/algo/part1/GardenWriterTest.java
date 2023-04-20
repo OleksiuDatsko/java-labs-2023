@@ -9,6 +9,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -19,6 +21,7 @@ class GardenWriterTest {
 
     GardenWriter gardenWriter;
     GardenManager gardens;
+
     @BeforeEach
     void setUp() throws IOException {
         gardenWriter = new GardenWriter();
@@ -45,6 +48,14 @@ class GardenWriterTest {
     }
 
     @Test
+    public void testWriteEmptyList() throws IOException {
+        List<Garden> emptyList = new LinkedList<>();
+        gardenWriter.writeToFile(emptyList);
+        File resultFile = new File(GardenWriter.RESULT_FILE_PATH);
+        assertFalse(resultFile.exists());
+    }
+
+    @Test
     public void testWriteToFileGardens() throws IOException {
 
         gardenWriter.writeToFile(gardens.getGardens());
@@ -59,23 +70,31 @@ class GardenWriterTest {
 
     @Test
     public void testRewriteToFileGardens() throws IOException {
-        try(FileWriter testWriter = new FileWriter(GardenWriter.RESULT_FILE_PATH)){
+        try (FileWriter testWriter = new FileWriter(GardenWriter.RESULT_FILE_PATH)) {
             testWriter.write("test test to rewrite");
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         testWriteToFileGardens();
     }
 
     @Test
-    public void testSortWriteNull() {
+    public void testGroupedWriteNull() {
         gardenWriter.groupedWriteToFile(null);
         File resultFile = new File(GardenWriter.RESULT_FILE_PATH);
         assertFalse(resultFile.exists());
     }
 
     @Test
-    public void testSortWriteToFileGardens() throws IOException {
+    public void testGroupedWriteEmptyList() throws IOException {
+        List<Garden> emptyList = new LinkedList<>();
+        gardenWriter.groupedWriteToFile(emptyList);
+        File resultFile = new File(GardenWriter.RESULT_FILE_PATH);
+        assertFalse(resultFile.exists());
+    }
+
+    @Test
+    public void testGroupedWriteToFileGardens() throws IOException {
 
         gardenWriter.groupedWriteToFile(gardens.getGardens());
 
@@ -88,13 +107,13 @@ class GardenWriterTest {
     }
 
     @Test
-    public void testSortRewriteToFileGardens() throws IOException {
-        try(FileWriter testWriter = new FileWriter(GardenWriter.RESULT_FILE_PATH)){
+    public void testGroupedRewriteToFileGardens() throws IOException {
+        try (FileWriter testWriter = new FileWriter(GardenWriter.RESULT_FILE_PATH)) {
             testWriter.write("test test to rewrite");
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        testWriteToFileGardens();
+        testGroupedWriteToFileGardens();
     }
 
     @AfterEach

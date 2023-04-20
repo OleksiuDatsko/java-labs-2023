@@ -3,6 +3,11 @@ areaInHectares, numberOfGreenhouses
 2.0, 5
 130.0, 5
 
+FarmGarden
+areaInHectares, numberOfTractors
+10.5, 8
+9.8, 15
+
 UniversityGarden
 areaInHectares, numberOfSculptures
 0.75, 16
@@ -12,9 +17,3 @@ UrbanGarden
 areaInHectares, isRoofTop, numberOfPlantContainers
 0.002, false, 25
 0.001, true, 10
-
-FarmGarden
-areaInHectares, numberOfTractors
-10.5, 8
-9.8, 15
-

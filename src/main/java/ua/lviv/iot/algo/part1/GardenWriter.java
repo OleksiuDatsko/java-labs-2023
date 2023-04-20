@@ -2,9 +2,9 @@ package ua.lviv.iot.algo.part1;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GardenWriter {
     public static final String RESULT_FILE_PATH = "src\\main\\java\\resources\\gardens.csv";
@@ -31,36 +31,21 @@ public class GardenWriter {
             return;
         }
 
-        List<Class<? extends Garden>> gardensType = gardens.stream()
-                .map(garden -> garden.getClass())
-                .distinct()
-                .collect(Collectors.toList());
-
         try (FileWriter writer = new FileWriter(RESULT_FILE_PATH);) {
-            for (var gardenType : gardensType) {
-                writer.write(gardenType
-                        .getTypeName()
-                        .replaceAll("ua.lviv.iot.algo.part1.", ""));
-                writer.write("\n");
-
-                writer.write(String.valueOf(gardenType
-                        .getDeclaredMethod("getHeaders")
-                        .invoke(gardenType.getDeclaredConstructor().newInstance())
-                ));
-                writer.write("\n");
-                for (var garden : gardens) {
-                    if (gardenType == garden.getClass()) {
-                        writer.write(garden.getCommaSeparatedValues());
-                        writer.write("\n");
-                    }
+            Collections.sort(gardens, Comparator.comparing((garden -> garden.getClass().getSimpleName())));
+            var gardenType = gardens.get(0).getClass().getSimpleName();
+            writer.write(gardenType + "\n");
+            writer.write(gardens.get(0).getHeaders() + "\n");
+            for(var garden: gardens){
+                if(garden.getClass().getSimpleName() != gardenType){
+                    gardenType = garden.getClass().getSimpleName();
+                    writer.write("\n" + gardenType + "\n");
+                    writer.write(garden.getHeaders() + "\n");
                 }
+                writer.write(garden.getCommaSeparatedValues());
                 writer.write("\n");
             }
-        } catch (IOException
-                 | NoSuchMethodException
-                 | InvocationTargetException
-                 | IllegalAccessException
-                 | InstantiationException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
