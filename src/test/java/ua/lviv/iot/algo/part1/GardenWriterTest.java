@@ -16,11 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class GardenWriterTest {
-    private static final String EXPECTED_UNSORTED_FILE = "src\\test\\java\\resources\\expected_unsorted.csv";
     private static final String EXPECTED_SORTED_FILE = "src\\test\\java\\resources\\expected_sorted.csv";
 
-    GardenWriter gardenWriter;
-    GardenManager gardens;
+    private GardenWriter gardenWriter;
+    private GardenManager gardens;
 
     @BeforeEach
     void setUp() throws IOException {
@@ -41,44 +40,6 @@ class GardenWriterTest {
     }
 
     @Test
-    public void testWriteNull() throws IOException {
-        gardenWriter.writeToFile(null);
-        File resultFile = new File(GardenWriter.RESULT_FILE_PATH);
-        assertFalse(resultFile.exists());
-    }
-
-    @Test
-    public void testWriteEmptyList() throws IOException {
-        List<Garden> emptyList = new LinkedList<>();
-        gardenWriter.writeToFile(emptyList);
-        File resultFile = new File(GardenWriter.RESULT_FILE_PATH);
-        assertFalse(resultFile.exists());
-    }
-
-    @Test
-    public void testWriteToFileGardens() throws IOException {
-
-        gardenWriter.writeToFile(gardens.getGardens());
-
-        File resultFile = new File(GardenWriter.RESULT_FILE_PATH);
-
-        Path expected = (new File(EXPECTED_UNSORTED_FILE)).toPath();
-        Path actual = resultFile.toPath();
-
-        assertEquals(-1L, Files.mismatch(expected, actual));
-    }
-
-    @Test
-    public void testRewriteToFileGardens() throws IOException {
-        try (FileWriter testWriter = new FileWriter(GardenWriter.RESULT_FILE_PATH)) {
-            testWriter.write("test test to rewrite");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        testWriteToFileGardens();
-    }
-
-    @Test
     public void testGroupedWriteNull() {
         gardenWriter.groupedWriteToFile(null);
         File resultFile = new File(GardenWriter.RESULT_FILE_PATH);
@@ -95,13 +56,9 @@ class GardenWriterTest {
 
     @Test
     public void testGroupedWriteToFileGardens() throws IOException {
-
         gardenWriter.groupedWriteToFile(gardens.getGardens());
-
-        File resultFile = new File(GardenWriter.RESULT_FILE_PATH);
-
         Path expected = (new File(EXPECTED_SORTED_FILE)).toPath();
-        Path actual = resultFile.toPath();
+        Path actual = new File(GardenWriter.RESULT_FILE_PATH).toPath();
 
         assertEquals(-1L, Files.mismatch(expected, actual));
     }
@@ -117,7 +74,7 @@ class GardenWriterTest {
     }
 
     @AfterEach
-    public void afterAll() throws IOException {
+    public void afterEach() throws IOException {
         Files.deleteIfExists(Path.of(GardenWriter.RESULT_FILE_PATH));
     }
 }

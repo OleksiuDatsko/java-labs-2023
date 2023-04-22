@@ -8,23 +8,7 @@ import java.util.List;
 
 public class GardenWriter {
     public static final String RESULT_FILE_PATH = "src\\main\\java\\resources\\gardens.csv";
-
-    public void writeToFile(List<Garden> gardens) throws IOException {
-
-        if (gardens == null || gardens.isEmpty()) {
-            return;
-        }
-        try (FileWriter writer = new FileWriter(RESULT_FILE_PATH);) {
-            for (var garden : gardens) {
-                writer.write(garden.getHeaders());
-                writer.write(" \r\n");
-                writer.write(garden.getCommaSeparatedValues());
-                writer.write(" \r\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    public static final String NEW_LINE = "\n";
 
     public void groupedWriteToFile(List<Garden> gardens) {
         if (gardens == null || gardens.isEmpty()) {
@@ -34,16 +18,16 @@ public class GardenWriter {
         try (FileWriter writer = new FileWriter(RESULT_FILE_PATH);) {
             Collections.sort(gardens, Comparator.comparing((garden -> garden.getClass().getSimpleName())));
             var gardenType = gardens.get(0).getClass().getSimpleName();
-            writer.write(gardenType + "\n");
-            writer.write(gardens.get(0).getHeaders() + "\n");
-            for(var garden: gardens){
-                if(garden.getClass().getSimpleName() != gardenType){
+            writer.write(gardenType + NEW_LINE);
+            writer.write(gardens.get(0).getHeaders() + NEW_LINE);
+            for (var garden : gardens) {
+                if (!garden.getClass().getSimpleName().equals(gardenType)) {
                     gardenType = garden.getClass().getSimpleName();
-                    writer.write("\n" + gardenType + "\n");
-                    writer.write(garden.getHeaders() + "\n");
+                    writer.write(NEW_LINE + gardenType + NEW_LINE);
+                    writer.write(garden.getHeaders() + NEW_LINE);
                 }
                 writer.write(garden.getCommaSeparatedValues());
-                writer.write("\n");
+                writer.write(NEW_LINE);
             }
         } catch (IOException e) {
             e.printStackTrace();
