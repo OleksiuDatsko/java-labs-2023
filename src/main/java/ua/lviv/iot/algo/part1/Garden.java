@@ -14,4 +14,12 @@ public abstract class Garden {
     public abstract boolean hasVegetableGarden();
 
     public abstract boolean hasOrchard();
+
+    public String getHeaders() {
+        return "areaInHectares";
+    }
+
+    public String getCommaSeparatedValues() {
+        return String.valueOf(areaInHectares);
+    }
 }

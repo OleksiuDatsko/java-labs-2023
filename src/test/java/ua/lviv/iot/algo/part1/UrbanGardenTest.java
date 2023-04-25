@@ -23,4 +23,15 @@ public class UrbanGardenTest {
         garden.addContainer(10);
         assertEquals(20, garden.getNumberOfPlantContainers());
     }
+
+    @Test
+    public void testGetHeaders(){
+        assertEquals("areaInHectares, isRoofTop, numberOfPlantContainers", garden.getHeaders());
+    }
+
+    @Test
+    public void testGetCVS(){
+        UrbanGarden garden = new UrbanGarden(2.0,true,10);
+        assertEquals("2.0, true, 10", garden.getCommaSeparatedValues());
+    }
 }

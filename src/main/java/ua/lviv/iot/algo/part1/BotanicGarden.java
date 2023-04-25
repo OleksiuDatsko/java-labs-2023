@@ -9,6 +9,8 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class BotanicGarden extends Garden {
 
+    public static final String HEADERS = " numberOfGreenhouses";
+
     private int numberOfGreenhouses;
 
     public BotanicGarden(double areaInHectares, int numberOfGreenhouses) {
@@ -24,5 +26,15 @@ public class BotanicGarden extends Garden {
     @Override
     public boolean hasOrchard() {
         return true;
+    }
+
+    @Override
+    public String getHeaders() {
+        return super.getHeaders() + "," + HEADERS;
+    }
+
+    @Override
+    public String getCommaSeparatedValues() {
+        return super.getCommaSeparatedValues() + ", " + String.valueOf(this.numberOfGreenhouses);
     }
 }
